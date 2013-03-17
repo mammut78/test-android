@@ -3,15 +3,41 @@
 <body>
 <script src="phonegap.js"></script>
 <script>
-function alert_img()
-{
-alert("ala ma kota");
-}
+
+        // onSuccess Callback
+        //
+        function onSuccess() {
+            console.log("playAudio():Audio Success");
+        }
+
+        // onError Callback 
+        //
+        function onError(error) {
+            alert('code: '    + error.code    + '\n' + 
+                  'message: ' + error.message + '\n');
+        }
+
+
+        // Audio player
+        //
+        var my_media = null;
+
+        // Play audio
+        //
+        function playAudio(src) {
+            if (my_media == null) {
+                // Create Media object from src
+                my_media = new Media(src, onSuccess, onError);
+            } // else play current audio
+            // Play audio
+            my_media.play();
+        }
+
 
 function add(path, text)
 {
 var canvas = document.createElement('canvas');
-canvas.onclick = function() { alert("ala ma kota"); };
+canvas.onclick = function() { playAudio("http://audio.ibeat.org/content/p1rj1s/p1rj1s_-_rockGuitar.mp3"); };
 var ctx=canvas.getContext("2d");
 var img = document.createElement('img');
 img.src = path;
@@ -23,8 +49,6 @@ ctx.fillText(text,10,img.height+20+2);
 document.body.appendChild(canvas);
 }
 
-add("http://www.w3schools.com/tags/img_the_scream.jpg", "ala ma kota a kot ma ale");
-add("http://www.w3schools.com/tags/img_the_scream.jpg", "ala ma kota a kot ma ale");
 add("http://www.w3schools.com/tags/img_the_scream.jpg", "ala ma kota a kot ma ale");
 add("http://www.w3schools.com/tags/img_the_scream.jpg", "ala ma kota a kot ma ale");
 </script>
