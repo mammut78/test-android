@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<body>
+<script src="phonegap.js"></script>
+<script>
+function alert_img()
+{
+alert("ala ma kota");
+}
+
+function add(path, text)
+{
+var canvas = document.createElement('canvas');
+canvas.onclick = function() { alert("ala ma kota"); };
+var ctx=canvas.getContext("2d");
+var img = document.createElement('img');
+img.src = path;
+canvas.width = img.width + 5;
+canvas.height = img.height + 20+2;
+ctx.drawImage(img, 0, 0);
+ctx.font="20px Georgia";
+ctx.fillText(text,10,img.height+20+2);
+document.body.appendChild(canvas);
+}
+
+add("http://www.w3schools.com/tags/img_the_scream.jpg", "ala ma kota a kot ma ale");
+add("http://www.w3schools.com/tags/img_the_scream.jpg", "ala ma kota a kot ma ale");
+add("http://www.w3schools.com/tags/img_the_scream.jpg", "ala ma kota a kot ma ale");
+add("http://www.w3schools.com/tags/img_the_scream.jpg", "ala ma kota a kot ma ale");
+</script>
+</body>
+</html>
