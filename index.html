@@ -30,6 +30,9 @@
                 // Create Media object from src
                 my_media = new Media(src, onSuccess, onError);
             } // else play current audio
+		if (playing) {
+			stopAudio();
+		}
             // Play audio
             my_media.play();
 		playing = true;
