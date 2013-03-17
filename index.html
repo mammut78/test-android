@@ -21,6 +21,7 @@
         // Audio player
         //
         var my_media = null;
+	var playing = false;
 
         // Play audio
         //
@@ -31,6 +32,18 @@
             } // else play current audio
             // Play audio
             my_media.play();
+		playing = true;
+        }
+
+        // Stop audio
+        // 
+        function stopAudio() {
+            if (my_media) {
+		if (playing) {
+			my_media.stop();
+			playing = false;
+		}
+            }
         }
 
 
@@ -51,6 +64,11 @@ document.body.appendChild(canvas);
 
 add("http://www.w3schools.com/tags/img_the_scream.jpg", "ala ma kota a kot ma ale");
 add("http://www.w3schools.com/tags/img_the_scream.jpg", "ala ma kota a kot ma ale");
+add("http://www.w3schools.com/tags/img_the_scream.jpg", "ala ma kota a kot ma ale");
+add("http://www.w3schools.com/tags/img_the_scream.jpg", "ala ma kota a kot ma ale");
+add("http://www.w3schools.com/tags/img_the_scream.jpg", "ala ma kota a kot ma ale");
+add("http://www.w3schools.com/tags/img_the_scream.jpg", "ala ma kota a kot ma ale");
+
 </script>
 </body>
 </html>
