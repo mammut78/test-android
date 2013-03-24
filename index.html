@@ -5,8 +5,8 @@
         // onSuccess Callback
         //
         function onSuccess() {
-            //console.log("playAudio():Audio Success");
-		alert("success");
+            console.log("playAudio():Audio Success");
+		//alert("success");
         }
 
         // onError Callback 
@@ -42,7 +42,7 @@
 		}
 		if (my_media == null) {
 			// Create Media object from src
-			alert("will play: "+src);
+			//alert("will play: "+src);
 			my_media = new Media(src, onSuccess, onError);
 		}
 		// Play audio
