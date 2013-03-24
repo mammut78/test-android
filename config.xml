@@ -10,4 +10,7 @@
     </description>
 
     <preference name="target-device" value="tablet" /> 
+    <preference name="backgroundColor" value="0x00000000" />
+    <preference name="loadingDialog" value="Eric Talk, Eric will talk" />
+
 </widget>
