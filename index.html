@@ -6,7 +6,8 @@
         // onSuccess Callback
         //
         function onSuccess() {
-            console.log("playAudio():Audio Success");
+            //console.log("playAudio():Audio Success");
+		alert("success");
         }
 
         // onError Callback 
@@ -29,9 +30,11 @@
                 // Create Media object from src
                 my_media = new Media(src, onSuccess, onError);
             } // else play current audio
+/*
 		if (playing) {
 			stopAudio();
 		}
+*/
             // Play audio
             my_media.play();
 		playing = true;
@@ -67,7 +70,7 @@ function add(text, pic, snd)
 	document.body.appendChild(canvas);
 }
 
-window.onload = function() {
+function onload_start() {
 	add("I want to go home.", "8.jpg", "8.mp3");
 	add("I want to go home.", "8.jpg", "8.mp3");
 	add("I want to go home.", "8.jpg", "8.mp3");
@@ -81,6 +84,6 @@ window.onload = function() {
 }
 
 </script>
-<body>
+<body onload="onload_start();">
 </body>
 </html>
