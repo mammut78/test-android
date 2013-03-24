@@ -27,10 +27,15 @@
         // Play audio
         //
         function playAudio(src) {
-            if (my_media == null) {
-                // Create Media object from src
-                my_media = new Media(src, onSuccess, onError);
-            } // else play current audio
+		if (my_media) {
+			my_media.stop();
+			my_media.release();
+			my_media = null;
+		}
+		if (my_media == null) {
+			// Create Media object from src
+			my_media = new Media(src, onSuccess, onError);
+		} // else play current audio
 /*
 		if (playing) {
 			stopAudio();
