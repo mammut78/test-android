@@ -50,27 +50,34 @@
         }
 
 
-function add(path, text)
+function add(text, pic, snd)
 {
-var canvas = document.createElement('canvas');
-canvas.onclick = function() { playAudio("http://audio.ibeat.org/content/p1rj1s/p1rj1s_-_rockGuitar.mp3"); };
-var ctx=canvas.getContext("2d");
-var img = document.createElement('img');
-img.src = path;
-canvas.width = img.width + 5;
-canvas.height = img.height + 20+2;
-ctx.drawImage(img, 0, 0);
-ctx.font="20px Georgia";
-ctx.fillText(text,10,img.height+20+2);
-document.body.appendChild(canvas);
+	var canvas = document.createElement('canvas');
+	canvas.onclick = function() { playAudio(snd); };
+	var ctx=canvas.getContext("2d");
+	var img = document.createElement('img');
+	img.src = pic;
+	ctx.font="20px Georgia";
+	var fontsize=ctx.measureText('Mg').width;
+	canvas.width = img.width + 5;
+	canvas.height = img.height + fontsize + 2;
+	ctx.drawImage(img, 0, 0);
+	ctx.font="20px Georgia";
+	ctx.textAlign = 'center';
+	ctx.fillText(text, canvas.width/2, img.height + (fontsize/2) + 2);
+	document.body.appendChild(canvas);
 }
 
-add("http://www.w3schools.com/tags/img_the_scream.jpg", "ala ma kota a kot ma ale");
-add("http://www.w3schools.com/tags/img_the_scream.jpg", "ala ma kota a kot ma ale");
-add("http://www.w3schools.com/tags/img_the_scream.jpg", "ala ma kota a kot ma ale");
-add("http://www.w3schools.com/tags/img_the_scream.jpg", "ala ma kota a kot ma ale");
-add("http://www.w3schools.com/tags/img_the_scream.jpg", "ala ma kota a kot ma ale");
-add("http://www.w3schools.com/tags/img_the_scream.jpg", "ala ma kota a kot ma ale");
+add("I want to go home.", "8.jpg", "8.mp3");
+add("I want to go home.", "8.jpg", "8.mp3");
+add("I want to go home.", "8.jpg", "8.mp3");
+add("I want to go home.", "8.jpg", "8.mp3");
+add("I want to go home.", "8.jpg", "8.mp3");
+add("I want to go home.", "8.jpg", "8.mp3");
+add("I want to go home.", "8.jpg", "8.mp3");
+add("I want to go home.", "8.jpg", "8.mp3");
+add("I want to go home.", "8.jpg", "8.mp3");
+add("I want to go home.", "8.jpg", "8.mp3");
 
 </script>
 </body>
