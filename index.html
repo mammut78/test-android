@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html>
 <script src="phonegap.js"></script>
+<style type="text/css">
+	body { background-color : #000000; color: white; }
+</style>
 <script>
         // onSuccess Callback
         //
@@ -51,50 +54,41 @@
 
 function add(text, pic, snd)
 {
-	var canvas = document.createElement('canvas');
-	canvas.onclick = function() { playAudio(snd); };
-	var ctx=canvas.getContext("2d");
 	var img = document.createElement('img');
+	img.onload = function() {
+		var canvas = document.createElement('canvas');
+		canvas.onclick = function() { playAudio("/android_asset/www/" + snd); };
+		var ctx=canvas.getContext("2d");
+		ctx.font="20px Georgia";
+		var fontsize=ctx.measureText('Mg').width;
+
+		canvas.width = img.width + 5;
+		canvas.height = img.height + fontsize + 2;
+		ctx.drawImage(img, 0, 0);
+		ctx.font="20px Georgia";
+		ctx.fillStyle = 'white';
+		ctx.textAlign = 'center';
+		ctx.fillText(text, canvas.width/2, img.height + (fontsize/2) + 2);
+		document.body.appendChild(canvas);
+
+	}
 	img.src = pic;
-	ctx.font="20px Georgia";
-	var fontsize=ctx.measureText('Mg').width;
-	canvas.width = img.width + 5;
-	canvas.height = img.height + fontsize + 2;
-	ctx.drawImage(img, 0, 0);
-	ctx.font="20px Georgia";
-	ctx.textAlign = 'center';
-	ctx.fillText(text, canvas.width/2, img.height + (fontsize/2) + 2);
-	document.body.appendChild(canvas);
 }
 
 function onDeviceReady() {
 	document.body.innerHTML = "";
-	add("I want to go home.", "library/1/8.jpg", "/android_asset/www/library/1/8.mp3");
-	add("I want to go home.", "library/1/8.jpg", "/android_asset/www/library/1/8.mp3");
-	add("I want to go home.", "library/1/8.jpg", "/android_asset/www/library/1/8.mp3");
-	add("I want to go home.", "library/1/8.jpg", "/android_asset/www/library/1/8.mp3");
-	add("I want to go home.", "library/1/8.jpg", "/android_asset/www/library/1/8.mp3");
-	add("I want to go home.", "library/1/8.jpg", "/android_asset/www/library/1/8.mp3");
-	add("I want to go home.", "library/1/8.jpg", "/android_asset/www/library/1/8.mp3");
-	add("I want to go home.", "library/1/8.jpg", "/android_asset/www/library/1/8.mp3");
-	add("I want to go home.", "library/1/8.jpg", "/android_asset/www/library/1/8.mp3");
-	add("I want to go home.", "library/1/8.jpg", "/android_asset/www/library/1/8.mp3");
-	add("I want to go home.", "library/1/8.jpg", "/android_asset/www/library/1/8.mp3");
-	add("I want to go home.", "library/1/8.jpg", "/android_asset/www/library/1/8.mp3");
-	add("I want to go home.", "library/1/8.jpg", "/android_asset/www/library/1/8.mp3");
-	add("I want to go home.", "library/1/8.jpg", "/android_asset/www/library/1/8.mp3");
-	add("I want to go home.", "library/1/8.jpg", "/android_asset/www/library/1/8.mp3");
-	add("I want to go home.", "library/1/8.jpg", "/android_asset/www/library/1/8.mp3");
-	add("I want to go home.", "library/1/8.jpg", "/android_asset/www/library/1/8.mp3");
-	add("I want to go home.", "library/1/8.jpg", "/android_asset/www/library/1/8.mp3");
+	add("I want to go home.", "library/1/8.jpg", "library/1/10.mp3");
+	add("It's time for school.", "library/1/9.jpg", "library/1/9.mp3");
+	add("I want to go to the playground.", "library/1/10.jpg", "library/1/10.mp3");
 }
 
 	// Wait for Cordova to load
 	//
-	document.addEventListener("deviceready", onDeviceReady, false);
+	//document.addEventListener("deviceready", onDeviceReady, false);
+
+	window.onload = function() { onDeviceReady(); }
 
 </script>
 <body>
-<a href="#" class="btn_large" onclick="onDeviceReady();">Start</a>
 </body>
 </html>
