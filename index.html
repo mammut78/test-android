@@ -2,7 +2,6 @@
 <html>
 <script src="phonegap.js"></script>
 <script>
-
         // onSuccess Callback
         //
         function onSuccess() {
@@ -14,8 +13,7 @@
         //
         function onError(error) {
             alert('code: '    + error.code    + '\n' + 
-                  'message: ' + error.message + '\n' + 
-		'network is: '+ MediaError.MEDIA_ERR_NETWORK);
+                  'message: ' + error.message + '\n');
         }
 
 
@@ -24,39 +22,32 @@
         var my_media = null;
 	var playing = false;
 
+	function onStatus(stat) {
+		if (stat == Media.MEDIA_STOPPED) {
+			playing = false;
+		} else {
+			playing = true;
+		}
+	}
+
         // Play audio
         //
         function playAudio(src) {
 		if (my_media) {
-			my_media.stop();
+			if (playing) {
+				my_media.stop();
+			}
 			my_media.release();
 			my_media = null;
 		}
 		if (my_media == null) {
 			// Create Media object from src
+			alert("will play: "+src);
 			my_media = new Media(src, onSuccess, onError);
-		} // else play current audio
-/*
-		if (playing) {
-			stopAudio();
 		}
-*/
-            // Play audio
-            my_media.play();
-		playing = true;
+		// Play audio
+		my_media.play();
         }
-
-        // Stop audio
-        // 
-        function stopAudio() {
-            if (my_media) {
-		if (playing) {
-			my_media.stop();
-			playing = false;
-		}
-            }
-        }
-
 
 function add(text, pic, snd)
 {
@@ -78,10 +69,10 @@ function add(text, pic, snd)
 
 function onDeviceReady() {
 	document.body.innerHTML = "";
-	add("I want to go home.", "8.jpg", "8.mp3");
-	add("I want to go home.", "8.jpg", "http://audio.ibeat.org/content/p1rj1s/p1rj1s_-_rockGuitar.mp3");
-	add("I want to go home.", "8.jpg", "library/1/8.mp3");
-	add("I want to go home.", "8.jpg", "8.mp3");
+	add("I want to go home.", "8.jpg", "/android_asset/8.mp3");
+	add("I want to go home.", "8.jpg", "/android_asset/www/8.mp3");
+	add("I want to go home.", "8.jpg", "file:///android_asset/8.mp3");
+	add("I want to go home.", "8.jpg", "file:///android_asset/www/8.mp3");
 	add("I want to go home.", "8.jpg", "8.mp3");
 	add("I want to go home.", "8.jpg", "8.mp3");
 	add("I want to go home.", "8.jpg", "8.mp3");
@@ -90,6 +81,9 @@ function onDeviceReady() {
 	add("I want to go home.", "8.jpg", "8.mp3");
 }
 
+	// Wait for Cordova to load
+	//
+	document.addEventListener("deviceready", onDeviceReady, false);
 
 </script>
 <body>
