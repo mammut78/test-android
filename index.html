@@ -14,7 +14,8 @@
         //
         function onError(error) {
             alert('code: '    + error.code    + '\n' + 
-                  'message: ' + error.message + '\n');
+                  'message: ' + error.message + '\n' + 
+		'network is: '+ MediaError.MEDIA_ERR_NETWORK);
         }
 
 
@@ -70,10 +71,11 @@ function add(text, pic, snd)
 	document.body.appendChild(canvas);
 }
 
-function onload_start() {
+function onDeviceReady() {
+	document.body.innerHTML = "";
 	add("I want to go home.", "8.jpg", "8.mp3");
-	add("I want to go home.", "8.jpg", "8.mp3");
-	add("I want to go home.", "8.jpg", "8.mp3");
+	add("I want to go home.", "8.jpg", "http://audio.ibeat.org/content/p1rj1s/p1rj1s_-_rockGuitar.mp3");
+	add("I want to go home.", "8.jpg", "library/1/8.mp3");
 	add("I want to go home.", "8.jpg", "8.mp3");
 	add("I want to go home.", "8.jpg", "8.mp3");
 	add("I want to go home.", "8.jpg", "8.mp3");
@@ -83,7 +85,9 @@ function onload_start() {
 	add("I want to go home.", "8.jpg", "8.mp3");
 }
 
+
 </script>
-<body onload="onload_start();">
+<body>
+<a href="#" class="btn_large" onclick="onDeviceReady();">Start</a>
 </body>
 </html>
